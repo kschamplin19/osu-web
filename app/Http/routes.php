@@ -86,6 +86,8 @@ Route::post('/community/slack/agree', ['as' => 'slack.agree', 'uses' => 'Communi
 
 Route::get('/u/{id}', ['as' => 'users.show', 'uses' => 'UsersController@show']);
 
+Route::get('/t/{id}', ['as' => 'teams.show', 'uses' => 'TeamsController@show']);
+Route::get('/community/teams', ['as' => 'teams', 'uses' => 'TeamsController@index']);
 // Authentication section (Temporarily set up as replacement/improvement of config("osu.urls.*"))
 Route::get('/users/forgot-password', ['as' => 'users.forgot-password', function () { return Redirect::to('https://osu.ppy.sh/p/forgot'); }]);
 Route::get('/users/register', ['as' => 'users.register', function () { return Redirect::to('https://osu.ppy.sh/p/register'); }]);

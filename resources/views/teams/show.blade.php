@@ -25,6 +25,10 @@
 @endsection
 
 @section("script")
+    @parent
+    <script data-turbolinks-eval="always">
+        var team = {!! json_encode($team['data']) !!};
+    </script>
 
     <script src="{{ elixir("js/react/team-page.js") }}" data-turbolinks-track></script>
 @endsection

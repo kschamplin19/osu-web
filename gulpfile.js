@@ -100,8 +100,8 @@ elixir(function(mix) {
     'react/beatmap-discussions.coffee'
   ], 'public/js/react/beatmap-discussions.js')
   .coffee([
-    'react/team-page.coffee',
-    'react/team-page/*.coffee'
+    'react/team-page/*.coffee',
+    'react/team-page.coffee'
   ], 'public/js/react/team-page.js')
   .version([
     'css/app.css',

@@ -15,7 +15,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-propsFunction = =>
-  team: team
+el = React.createElement
 
-reactTurbolinks.register 'team-profile', TeamPage.Main, propsFunction
+class TeamPage.HeaderFlags extends React.Component
+  render: =>
+    if @props.team.profileColour
+      style = backgroundColor: "##{@props.team.profileColour}"
+
+    el 'div',
+      className: 'user-profile-header__basic user-profile-header__basic--flags'
+      style: style
+      el FlagCountry, country: @props.team.country

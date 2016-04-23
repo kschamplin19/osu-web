@@ -15,7 +15,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-propsFunction = =>
-  team: team
+el = React.createElement
 
-reactTurbolinks.register 'team-profile', TeamPage.Main, propsFunction
+class TeamPage.HeaderInfo extends React.Component
+  render: =>
+    el 'div', className: 'user-profile-header__basic',
+        el 'h1', className: 'profile-basic--large profile-basic',
+          @props.team.teamname
+        el 'p', className: 'profile-basic', @props.team.created

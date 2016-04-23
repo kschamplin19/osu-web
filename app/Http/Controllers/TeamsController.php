@@ -34,6 +34,11 @@ class TeamsController extends Controller
    }
    public function show($id)
    {
+     $team = Team::lookup($id);
+     if ($team === null) {
+       abort(404);
+     }
+     
      return view('teams.show')->with('team', Team::findOrFail($id));
    }
  }

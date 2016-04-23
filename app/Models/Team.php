@@ -32,8 +32,13 @@
      'team_openjoin' => 'boolean',
      'team_rank' => 'integer',
    ];
-   public function members()
+   public static function lookup($team_id)
    {
-     return $this->hasMany('App\Models\TeamMembers')
+       if (!present($team_id)) {
+           return;
+       }
+       $team = self::where('team_id', $team_id);
+
+       return $team->first();
    }
  }

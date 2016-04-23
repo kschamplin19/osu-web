@@ -245,6 +245,7 @@ function nav_links()
     $links['community'] = [
         'forum-forums-index' => route('forum.forums.index'),
         'tournaments' => route('tournaments.index'),
+        'teams' => route('teams'),
         'getLive' => route('live'),
         'getSlack' => route('slack'),
     ];

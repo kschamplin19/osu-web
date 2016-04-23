@@ -80,6 +80,8 @@ Route::post('users/login', ['as' => 'users.login', 'uses' => 'UsersController@lo
 Route::delete('users/logout', ['as' => 'users.logout', 'uses' => 'UsersController@logout']);
 Route::get('users/disabled', ['as' => 'users.disabled', 'uses' => 'UsersController@disabled']);
 
+Route::get('/t/{id}', ['as' => 'teams.show', 'uses' => 'TeamsController@show']);
+Route::get('/community/teams', ['as' => 'teams', 'uses' => 'TeamsController@index']);
 // Authentication section (Temporarily set up as replacement/improvement of config("osu.urls.*"))
 Route::get('users/forgot-password', ['as' => 'users.forgot-password', function () { return Redirect::to('https://osu.ppy.sh/p/forgot'); }]);
 Route::get('users/register', ['as' => 'users.register', function () { return Redirect::to('https://osu.ppy.sh/p/register'); }]);

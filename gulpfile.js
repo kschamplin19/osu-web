@@ -105,6 +105,10 @@ elixir(function(mix) {
     'react/beatmapset-page/*.coffee',
     'react/beatmapset-page.coffee'
   ], 'public/js/react/beatmapset-page.js')
+  .coffee([  
+    'react/team-page.coffee',
+    'react/team-page/*.coffee'
+  ], 'public/js/react/team-page.js')
   .version([
     'css/app.css',
     'js/app.js',
@@ -114,5 +118,6 @@ elixir(function(mix) {
     'js/react/status-page.js',
     'js/react/beatmap-discussions.js',
     'js/react/beatmapset-page.js',
+    'js/react/team-page.js',
   ]);
 });

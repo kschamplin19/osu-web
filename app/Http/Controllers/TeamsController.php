@@ -19,6 +19,7 @@
  namespace App\Http\Controllers;
 
 use App\Models\Team;
+use App\Transformers\TeamTransformer;
 use Auth;
 class TeamsController extends Controller
  {
@@ -38,7 +39,11 @@ class TeamsController extends Controller
      if ($team === null) {
        abort(404);
      }
+     $teamArray = fractal_item_array(
+            $team,
+            new TeamTransformer($team)
+        );
      
-     return view('teams.show')->with('team', Team::findOrFail($id));
+     return view('teams.show', compact('team', 'teamArray', 'teamAchievements'));
    }
  }

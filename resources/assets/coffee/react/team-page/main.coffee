@@ -30,4 +30,7 @@ class TeamPage.Main extends React.Component
     div className: 'osu-layout__section',
       el TeamPage.Header,
         team: @state.team
+        stats: stats
+        currentMode: @state.currentMode
+        withEdit: @props.withEdit
         isCoverUpdating: @state.isCoverUpdating

@@ -30,9 +30,15 @@ var
  * Reference: https://github.com/ben-eb/cssnano/issues/154
  */
 elixir.config.css.cssnano.pluginOptions = {
-  mergeRules: false,
+  mergeRules: false
 }
 
+elixir.config.js.browserify.watchify = {
+  enabled: true,
+  options: {
+    poll: true
+  }
+}
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -115,3 +121,4 @@ elixir(function(mix) {
     'js/react/team-page.js'
   ]);
 });
+console.log(elixir);

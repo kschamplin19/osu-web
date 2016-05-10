@@ -24,21 +24,50 @@
 
  class Team extends Model
  {
-   protected $table = 'teams';
-   protected $primaryKey = 'team_id';
-   protected $casts = [
-     'team_id' => 'integer',
-     'team_name' => 'string',
-     'team_openjoin' => 'boolean',
-     'team_rank' => 'integer',
-   ];
-   public static function lookup($team_id)
-   {
-       if (!present($team_id)) {
-           return;
-       }
-       $team = self::where('team_id', $team_id);
+    protected $table = 'teams';
+    protected $primaryKey = 'id';
+    protected $visible = ['name'];
+    protected $guarded = [];
+    protected $casts = [
+      'id' => 'integer',
+      'name' => 'string',
+    ];
+    public static function getAdmins()
+    {
+      return [1]; #temporary user 1
+    }
+    public static function getMembers()
+    {
+      return [2]; #temporary user 2
+    }
+    public static function lookup($teamname_or_id, $lookup_type = null, $find_all = false)
+    {
+        if (!present($teamname_or_id)) {
+            return;
+        }
 
-       return $team->first();
-   }
+        switch ($lookup_type) {
+            case 'string':
+                $team = self::where('name', $teamname_or_id)->orWhere('name_clean', $teamname_or_id);
+                break;
+
+            case 'id':
+                $team = self::where('id', $teamname_or_id);
+                break;
+
+            default:
+                if (is_numeric($teamname_or_id)) {
+                    $team = self::where('id', $teamname_or_id);
+                } else {
+                    $team = self::where('name', $teamname_or_id)->orWhere('name_clean', $teamname_or_id);
+                }
+                break;
+        }
+
+        if (!$find_all) {
+            $team = $team;
+        }
+
+        return $team->first();
+    }
  }

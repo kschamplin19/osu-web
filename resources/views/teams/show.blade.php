@@ -21,7 +21,7 @@
 ])
 
 @section("content")
-      <div class="osu-layout__row js-react--team-profile"></div>
+      <div class="osu-layout__row js-react--team-page"></div>
 @endsection
 
 @section("script")

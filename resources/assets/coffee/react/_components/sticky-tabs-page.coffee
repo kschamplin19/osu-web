@@ -15,11 +15,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-el = React.createElement
 
-class TeamPage.HeaderInfo extends React.Component
-  render: =>
-    el 'div', className: 'user-profile-header__basic',
-        el 'h1', className: 'user-profile-header__text user-profile-header__text--large',
-          @props.team.name
-        el 'p', className: 'user-profile-header__text', @props.team.created
+class @StickyTabsPage extends React.Component
+  _tabsStick: (_e, target) =>
+    newState = (target == 'page-extra-tabs')
+    @setState(tabsSticky: newState) if newState != @state.tabsSticky

@@ -25,4 +25,3 @@ class TeamPage.HeaderFlags extends React.Component
     el 'div',
       className: 'user-profile-header__basic user-profile-header__basic--flags'
       style: style
-      el FlagCountry, country: @props.team.country

@@ -22,7 +22,7 @@ class TeamPage.Header extends React.Component
     super props
     @state =
       editing: false
-      coverUrl: props.team.cover
+      coverUrl: 'https://i.ytimg.com/vi/qWv89hC073c/maxresdefault.jpg'
 
     @coverSet = _.debounce @coverSet, 300
 
@@ -64,8 +64,8 @@ class TeamPage.Header extends React.Component
       Fade.in $('.blackout')[0]
 
       $(document).on 'click.profilePageHeader.toggleHeaderEdit', (e) =>
-        return if $(e.target).closest('.profile-change-cover-popup').length
-        return if $(e.target).closest('.profile-change-cover-button').length
+        return if $(e.target).closest('.profile-cover-change-popup').length
+        return if $(e.target).closest('.js-profile-header__change-cover-button').length
         return if $('#overlay').is(':visible')
         @toggleEdit()
 
@@ -78,7 +78,6 @@ class TeamPage.Header extends React.Component
 
   coverSet: (_e, url) =>
     return if @props.isCoverUpdating
-
     @setState coverUrl: url
 
 
@@ -88,34 +87,34 @@ class TeamPage.Header extends React.Component
 
     el 'div', className: mainClasses,
       el 'div',
-        className: 'profile-cover',
+        className: 'profile-header__cover',
         style:
           backgroundImage: "url('#{@state.coverUrl}')"
 
-      el 'div', className: 'profile-avatar-container',
+      el 'div', className: 'profile-header__avatar-container',
         el TeamAvatar, team: @props.team, modifiers: ['profile']
 
       el 'div',
-        className: 'profile-cover-uploading-spinner'
+        className: 'profile-header__uploading-spinner-container'
         'data-state': 'enabled' if @props.isCoverUpdating
 
         el 'div', className: 'spinner',
           el 'div', className: 'spinner__cube'
           el 'div', className: 'spinner__cube spinner__cube--2'
-
-      el 'div', className: 'user-bar-container',
-        el 'div', className: 'user-profile-header__bar user-profile-header__bar--left',
-          el ProfilePage.HeaderFlags, team: @props.team
-          el ProfilePage.HeaderInfo, team: @props.team
+      el 'div', className: 'profile-header__userbar-container',
+        el 'div', className: 'user-profile-header__bar user-profile-header__bar--left', 
+          el TeamPage.HeaderFlags, team: @props.team
+          el TeamPage.HeaderInfo, team: @props.team
         el 'div', className: 'user-profile-header__bar user-profile-header__bar--right',
-          el ProfilePage.Rank,
-            rank: @props.stats.rank
-            countryName: @props.user.country.name
-            currentMode: @props.currentMode
-
+          el TeamPage.Rank, 
+            rank: 1
+###
       if @props.withEdit
-        el 'div', className: 'profile-change-cover-button', onClick: @toggleEdit,
+        el 'div',
+          className: 'profile-header__change-cover-button js-profile-header__change-cover-button',
+          onClick: @toggleEdit,
           Lang.get 'users.show.edit.cover.button'
 
       if @state.editing
-        el ProfilePage.CoverSelector, canUpload: @props.user.isSupporter, cover: @props.team.cover
+        el TeamPage.CoverSelector, canUpload: true, cover: @props.user.cover
+###

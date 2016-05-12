@@ -80,3 +80,4 @@ sftp-settings.json
 /resources/assets/js/build/
 
 composer-installer
+sublime-gulp.log

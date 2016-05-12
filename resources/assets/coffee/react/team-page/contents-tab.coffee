@@ -15,26 +15,19 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-{div} = React.DOM
 el = React.createElement
 
-class TeamPage.Main extends React.Component
-  constructor: (props) ->
-    super props
-    @timeouts = {}
+class TeamPage.ContentsTab extends React.Component
+  onClick: (e) =>
+    e.preventDefault()
+    $.publish 'profile:mode:set', @props.mode
 
-    @state =
-      team: props.team
-      isCoverUpdating: false
-  render: ->
-    div className: 'osu-layout__section',
-      el TeamPage.Header,
-        team: @state.team
-        currentMode: @state.currentMode
-        withEdit: @props.withEdit
-        isCoverUpdating: @state.isCoverUpdating
-      el TeamPage.Contents,
-        team: @state.team
-        currentMode: @state.currentMode
-        currentPage: @state.currentPage
-        allAchievements: @props.allAchievements
+  render: =>
+    className = 'page-tabs__tab'
+    className += ' page-tabs__tab--active' if @props.mode == @props.currentMode
+
+    el 'a',
+      href: ProfilePageHash.generate page: @props.currentPage, mode: @props.mode
+      onClick: @onClick
+      className: className
+      Lang.get "teams.mode.#{@props.mode}"

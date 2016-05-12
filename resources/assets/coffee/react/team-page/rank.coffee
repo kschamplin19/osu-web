@@ -15,26 +15,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-{div} = React.DOM
 el = React.createElement
 
-class TeamPage.Main extends React.Component
-  constructor: (props) ->
-    super props
-    @timeouts = {}
+class TeamPage.Rank extends React.Component
+  render: =>
+    return el('div') unless @props.rank.isRanked
 
-    @state =
-      team: props.team
-      isCoverUpdating: false
-  render: ->
-    div className: 'osu-layout__section',
-      el TeamPage.Header,
-        team: @state.team
-        currentMode: @state.currentMode
-        withEdit: @props.withEdit
-        isCoverUpdating: @state.isCoverUpdating
-      el TeamPage.Contents,
-        team: @state.team
-        currentMode: @state.currentMode
-        currentPage: @state.currentPage
-        allAchievements: @props.allAchievements
+    el 'div', className: 'user-profile-header__basic user-profile-header__basic--right',
+        el 'p',
+          className: 'user-profile-header__text user-profile-header__text--large'
+          title: Lang.get('users.show.rank.global', mode: Lang.get("beatmaps.mode.#{@props.currentMode}"))
+          el 'span', className: 'user-profile-header__rank-icon',
+            el Icon, name: "osu-#{@props.currentMode}-o"
+          "##{@props.rank.global.toLocaleString()}"

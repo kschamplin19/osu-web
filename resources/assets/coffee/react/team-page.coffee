@@ -18,4 +18,4 @@
 propsFunction = =>
   team: team
 
-reactTurbolinks.register 'team-profile', TeamPage.Main, propsFunction
+reactTurbolinks.register 'team-page', TeamPage.Main, propsFunction

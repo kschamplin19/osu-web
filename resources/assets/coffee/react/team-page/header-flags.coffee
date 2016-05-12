@@ -15,26 +15,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-{div} = React.DOM
 el = React.createElement
 
-class TeamPage.Main extends React.Component
-  constructor: (props) ->
-    super props
-    @timeouts = {}
+class TeamPage.HeaderFlags extends React.Component
+  render: =>
+    if @props.team.profileColour
+      style = backgroundColor: "##{@props.team.profileColour}"
 
-    @state =
-      team: props.team
-      isCoverUpdating: false
-  render: ->
-    div className: 'osu-layout__section',
-      el TeamPage.Header,
-        team: @state.team
-        currentMode: @state.currentMode
-        withEdit: @props.withEdit
-        isCoverUpdating: @state.isCoverUpdating
-      el TeamPage.Contents,
-        team: @state.team
-        currentMode: @state.currentMode
-        currentPage: @state.currentPage
-        allAchievements: @props.allAchievements
+    el 'div',
+      className: 'user-profile-header__basic user-profile-header__basic--flags'
+      style: style

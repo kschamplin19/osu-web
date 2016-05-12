@@ -308,7 +308,7 @@ function display_regdate($user_or_team)
             return trans('users.show.first_members');
         }
 
-        return trans('users.show.joined_at', ['date' => $user_or_team->created_at->formatLocalized('%B %Y')]);
+        return trans('teams.show.joined_at', ['date' => $user_or_team->created_at->formatLocalized('%B %Y')]);
     }
 }
 

@@ -33,12 +33,6 @@ elixir.config.css.cssnano.pluginOptions = {
   mergeRules: false
 }
 
-elixir.config.js.browserify.watchify = {
-  enabled: true,
-  options: {
-    poll: true
-  }
-}
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -50,13 +44,12 @@ elixir.config.js.browserify.watchify = {
  |
  */
 
-elixir(function(mix) {
-  mix
-  .copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')
-  .copy('node_modules/photoswipe/dist/default-skin', 'public/vendor/_photoswipe-default-skin')
-  .less('app.less')
-  .browserify(['vendor-modules.js'], 'resources/assets/js/build/vendor-modules.js')
-  .coffee([
+elixir(function (mix) {
+  mix.copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')
+  mix.copy('node_modules/photoswipe/dist/default-skin', 'public/vendor/_photoswipe-default-skin')
+  mix.less('app.less')
+  mix.browserify(['vendor-modules.js'], 'resources/assets/js/build/vendor-modules.js')
+  mix.coffee([
     '_classes/*.coffee',
     'react/_components/*.coffee',
 
@@ -78,7 +71,7 @@ elixir(function(mix) {
 
     'main.coffee',
   ], 'resources/assets/js/build/app-main.js')
-  .scripts([
+  mix.scripts([
     path.join(composer_root, 'helthe/turbolinks/Resources/public/js/turbolinks.js'),
     'build/vendor-modules.js',
     'ga.js',
@@ -86,31 +79,31 @@ elixir(function(mix) {
     'laroute.js',
     'build/app-main.js',
   ], 'public/js/app.js')
-  .coffee([
+  mix.coffee([
     'react/profile-page/*.coffee',
     'react/profile-page.coffee',
   ], 'public/js/react/profile-page.js')
-  .coffee([
+  mix.coffee([
     'react/beatmaps/*.coffee',
     'react/beatmaps.coffee'
   ], 'public/js/react/beatmaps.js')
-  .coffee([
+  mix.coffee([
     'react/slack-page/*.coffee',
     'react/slack-page.coffee'
   ], 'public/js/react/slack-page.js')
-  .coffee([
+  mix.coffee([
     'react/status-page/*.coffee',
     'react/status-page.coffee'
   ], 'public/js/react/status-page.js')
-  .coffee([
+  mix.coffee([
     'react/beatmap-discussions/*.coffee',
     'react/beatmap-discussions.coffee'
   ], 'public/js/react/beatmap-discussions.js')
-  .coffee([
+  mix.coffee([
     'react/team-page/*.coffee',
     'react/team-page.coffee'
   ], 'public/js/react/team-page.js')
-  .version([
+  mix.version([
     'css/app.css',
     'js/app.js',
     'js/react/profile-page.js',
@@ -121,4 +114,3 @@ elixir(function(mix) {
     'js/react/team-page.js'
   ]);
 });
-console.log(elixir);

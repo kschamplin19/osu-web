@@ -295,17 +295,21 @@ function base62_encode($input)
     return $output;
 }
 
-function display_regdate($user)
+function display_regdate($user_or_team)
 {
-    if ($user->user_regdate === null) {
-        return;
-    }
+    if ($user_or_team->user_regdate !== null) {
 
-    if ($user->user_regdate < Carbon\Carbon::createFromDate(2008, 1, 1)) {
-        return trans('users.show.first_members');
-    }
+        if ($user_or_team->user_regdate < Carbon\Carbon::createFromDate(2008, 1, 1)) {
+            return trans('users.show.first_members');
+        }
 
-    return trans('users.show.joined_at', ['date' => $user->user_regdate->formatLocalized('%B %Y')]);
+        return trans('users.show.joined_at', ['date' => $user_or_team->user_regdate->formatLocalized('%B %Y')]);
+    } else if ($user_or_team->created_at !== null) {
+        if ($user_or_team->created_at < Carbon\Carbon::createFromDate(2008, 1, 1)) {
+            return trans('users.show.first_members');
+        }
+        return trans('users.show.joined_at', ['date' => $user_or_team->created_at->formatLocalized('%B %Y')]);
+    }
 }
 
 function open_image($path, $dimensions = null)

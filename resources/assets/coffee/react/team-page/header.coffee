@@ -73,6 +73,7 @@ class TeamPage.Header extends React.Component
 
 
   coverReset: =>
+
     @coverSet null, @props.team.cover.url
 
 
@@ -101,6 +102,7 @@ class TeamPage.Header extends React.Component
         el 'div', className: 'spinner',
           el 'div', className: 'spinner__cube'
           el 'div', className: 'spinner__cube spinner__cube--2'
+
       el 'div', className: 'profile-header__userbar-container',
         el 'div', className: 'user-profile-header__bar user-profile-header__bar--left', 
           el TeamPage.HeaderFlags, team: @props.team
@@ -117,4 +119,3 @@ class TeamPage.Header extends React.Component
 
       if @state.editing
         el TeamPage.CoverSelector, canUpload: true, cover: @props.user.cover
-###

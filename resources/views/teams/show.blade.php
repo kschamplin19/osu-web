@@ -17,7 +17,7 @@
 --}}
 @extends("master", [
 'current_section' => 'community',
-'current_action' => 'teams',
+'current_action' => 'team',
 ])
 
 @section("content")
@@ -27,7 +27,8 @@
 @section("script")
     @parent
     <script data-turbolinks-eval="always">
-        var team = {!! json_encode($team['data']) !!};
+        var team = {!! json_encode($teamArray['data']) !!};
+        console.log(team);
     </script>
 
     <script src="{{ elixir("js/react/team-page.js") }}" data-turbolinks-track></script>

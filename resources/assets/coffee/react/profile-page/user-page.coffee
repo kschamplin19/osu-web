@@ -45,23 +45,42 @@ class ProfilePage.UserPage extends React.Component
 
 
   pageNew: =>
+<<<<<<< HEAD
+    canCreate = @props.withEdit and @props.user.isSupporter
+
+    el 'div', className: 'profile-extra-user-page--new',
+      el 'button',
+        className: 'profile-extra-user-page__new-content btn-osu btn-osu--lite btn-osu--profile-page-edit'
+=======
     div className: 'text-center',
       button
         className: 'profile-extra-user-page__new-content   btn-osu btn-osu--lite btn-osu--profile-page-edit'
+>>>>>>> master
         onClick: @editStart
         disabled: !@props.user.isSupporter
         Lang.get 'users.show.page.edit_big'
 
+<<<<<<< HEAD
+      el 'p', className: 'profile-extra-user-page__new-content profile-extra-user-page__new-content--icon',
+        el 'i', className: 'fa fa-pencil-square-o'
+
+      el 'p',
+=======
       p className: 'profile-extra-user-page__new-content profile-extra-user-page__new-content--icon',
         el Icon, name: 'pencil-square-o'
 
       p
+>>>>>>> master
         className: 'profile-extra-user-page__new-content'
         dangerouslySetInnerHTML:
           __html: Lang.get 'users.show.page.description'
 
       if !@props.user.isSupporter
+<<<<<<< HEAD
+        el 'p',
+=======
         p
+>>>>>>> master
           className: 'profile-extra-user-page__new-content'
           dangerouslySetInnerHTML:
             __html: Lang.get 'users.show.page.restriction_info'
@@ -70,3 +89,30 @@ class ProfilePage.UserPage extends React.Component
   pageShow: =>
     div dangerouslySetInnerHTML:
       __html: @props.userPage.html
+<<<<<<< HEAD
+
+  render: =>
+    withEditButton = @props.withEdit
+
+    if withEditButton && @props.userPage.html == ''
+      withEditButton = false
+      page = @pageNew()
+    else if @props.userPage.editing
+      page = el ProfilePage.UserPageEditor, userPage: @props.userPage
+    else
+      page = @pageShow()
+
+    el 'div', className: 'page-extra',
+      el ProfilePage.ExtraHeader, name: @props.name, withEdit: @props.withEdit
+
+      if withEditButton && !@props.userPage.editing
+        el 'div', className: 'page-extra__actions',
+          el 'div', className: 'forum-post-actions',
+            el 'a',
+              className: 'forum-post-actions__action'
+              href: '#'
+              onClick: @editStart
+              el 'i', className: 'fa fa-edit'
+      page
+=======
+>>>>>>> master

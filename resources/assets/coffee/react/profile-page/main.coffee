@@ -18,13 +18,31 @@
 {div} = React.DOM
 el = React.createElement
 
+<<<<<<< HEAD
+class ProfilePage.Main extends SwitchableModePage
+  constructor: (props) ->
+    super props
+=======
 ProfilePage.Main = React.createClass
   mixins: [ScrollingPageMixin]
+>>>>>>> master
 
   getInitialState: ->
     optionsHash = ProfilePageHash.parse location.hash
     @initialPage = optionsHash.page
 
+<<<<<<< HEAD
+    @state =
+      currentMode: optionsHash.mode || props.user.playmode
+      user: props.user
+      userPage:
+        html: props.userPage.html
+        initialRaw: props.userPage.raw
+        raw: props.userPage.raw
+        editing: false
+        selection: [0, 0]
+      isCoverUpdating: false
+=======
     currentMode: @validMode(optionsHash.mode ? @props.user.playmode)
     user: @props.user
     userPage:
@@ -34,18 +52,23 @@ ProfilePage.Main = React.createClass
       editing: false
       selection: [0, 0]
     isCoverUpdating: false
+>>>>>>> master
 
 
   coverUploadState: (_e, state) ->
     @setState isCoverUpdating: state
 
 
+<<<<<<< HEAD
+  setHash: =>
+=======
   setCurrentMode: (_e, mode) ->
     return if @state.currentMode == mode
     @setState currentMode: @validMode(mode), @setHash
 
 
   setHash: ->
+>>>>>>> master
     osu.setHash ProfilePageHash.generate(page: @state.currentPage, mode: @state.currentMode)
 
 
@@ -59,7 +82,11 @@ ProfilePage.Main = React.createClass
     @setState userPage: _.extend(currentUserPage, newUserPage)
 
 
+<<<<<<< HEAD
+  componentDidMount: =>
+=======
   componentDidMount: ->
+>>>>>>> master
     @removeListeners()
     $.subscribe 'user:update.profilePage', @userUpdate
     $.subscribe 'user:cover:upload:state.profilePage', @coverUploadState
@@ -70,7 +97,14 @@ ProfilePage.Main = React.createClass
     @pageJump null, @initialPage
 
 
+<<<<<<< HEAD
+  componentWillUnmount: =>
+    for own _name, timeout of @timeouts
+      clearTimeout timeout
+
+=======
   componentWillUnmount: ->
+>>>>>>> master
     @removeListeners()
 
 
@@ -97,12 +131,16 @@ ProfilePage.Main = React.createClass
         stats: stats
         currentMode: @state.currentMode
         currentPage: @state.currentPage
+<<<<<<< HEAD
+        allAchievements: @props.allAchievements
+=======
         userAchievements: @props.userAchievements
         achievements: @props.achievements
+>>>>>>> master
 
       el ProfilePage.Extra,
-        userAchievements: @props.userAchievements
         achievements: @props.achievements
+        allAchievements: @props.allAchievements
         beatmapPlaycounts: @props.beatmapPlaycounts
         favouriteBeatmapSets: @props.favouriteBeatmapSets
         rankedAndApprovedBeatmapSets: @props.rankedAndApprovedBeatmapSets
@@ -119,6 +157,8 @@ ProfilePage.Main = React.createClass
         userPage: @state.userPage
         currentPage: @state.currentPage
         currentMode: @state.currentMode
+<<<<<<< HEAD
+=======
 
 
   validMode: (mode) ->
@@ -128,3 +168,4 @@ ProfilePage.Main = React.createClass
       mode
     else
       modes[0]
+>>>>>>> master

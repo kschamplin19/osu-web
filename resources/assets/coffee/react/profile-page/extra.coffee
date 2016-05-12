@@ -21,6 +21,7 @@ el = React.createElement
 ProfilePage.Extra = React.createClass
   mixins: [StickyTabsMixin]
 
+
   getInitialState: ->
     tabsSticky: false
     profileOrder: @props.user.profileOrder

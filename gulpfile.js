@@ -30,7 +30,7 @@ var
  * Reference: https://github.com/ben-eb/cssnano/issues/154
  */
 elixir.config.css.cssnano.pluginOptions = {
-  mergeRules: false,
+  mergeRules: false
 }
 
 /*
@@ -44,13 +44,12 @@ elixir.config.css.cssnano.pluginOptions = {
  |
  */
 
-elixir(function(mix) {
-  mix
-  .copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')
-  .copy('node_modules/photoswipe/dist/default-skin', 'public/vendor/_photoswipe-default-skin')
-  .less('app.less')
-  .browserify(['vendor-modules.js'], 'resources/assets/js/build/vendor-modules.js')
-  .coffee([
+elixir(function (mix) {
+  mix.copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')
+  mix.copy('node_modules/photoswipe/dist/default-skin', 'public/vendor/_photoswipe-default-skin')
+  mix.less('app.less')
+  mix.browserify(['vendor-modules.js'], 'resources/assets/js/build/vendor-modules.js')
+  mix.coffee([
     '_classes/*.coffee',
     'react/_components/*.coffee',
     'react/_mixins/*.coffee',
@@ -73,7 +72,7 @@ elixir(function(mix) {
 
     'main.coffee',
   ], 'resources/assets/js/build/app-main.js')
-  .scripts([
+  mix.scripts([
     path.join(composer_root, 'helthe/turbolinks/Resources/public/js/turbolinks.js'),
     'build/vendor-modules.js',
     'ga.js',
@@ -81,23 +80,23 @@ elixir(function(mix) {
     'laroute.js',
     'build/app-main.js',
   ], 'public/js/app.js')
-  .coffee([
+  mix.coffee([
     'react/profile-page/*.coffee',
     'react/profile-page.coffee',
   ], 'public/js/react/profile-page.js')
-  .coffee([
+  mix.coffee([
     'react/beatmaps/*.coffee',
     'react/beatmaps.coffee'
   ], 'public/js/react/beatmaps.js')
-  .coffee([
+  mix.coffee([
     'react/slack-page/*.coffee',
     'react/slack-page.coffee'
   ], 'public/js/react/slack-page.js')
-  .coffee([
+  mix.coffee([
     'react/status-page/*.coffee',
     'react/status-page.coffee'
   ], 'public/js/react/status-page.js')
-  .coffee([
+  mix.coffee([
     'react/beatmap-discussions/*.coffee',
     'react/beatmap-discussions.coffee'
   ], 'public/js/react/beatmap-discussions.js')
@@ -117,7 +116,7 @@ elixir(function(mix) {
     'js/react/slack-page.js',
     'js/react/status-page.js',
     'js/react/beatmap-discussions.js',
-    'js/react/beatmapset-page.js',
     'js/react/team-page.js',
+    'js/react/beatmapset-page.js',
   ]);
 });

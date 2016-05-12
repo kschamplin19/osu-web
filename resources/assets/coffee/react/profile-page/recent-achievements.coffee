@@ -26,25 +26,27 @@ class ProfilePage.RecentAchievements extends React.Component
 
 
   render: =>
-    counts =
-      current: @props.userAchievements.length
-      total: _.size @props.achievements
-
     maxDisplayed = 8
-    achievementsProgress = (100 * counts.current / counts.total).toFixed()
-
-    currentUserAchievements = _.chain(@props.userAchievements)
-      .map (ua) =>
-        userAchievement: ua
-        achievement: @props.achievements[ua.achievement_id]
-      .filter (a) =>
-        !a.achievement.mode? || a.achievement.mode == @props.currentMode
-      .value()
+    achievementsProgress = (100 * @props.achievementsCounts.current / @props.achievementsCounts.total).toFixed()
+    moreCount = @props.achievementsCounts.current - Math.min(@props.allAchievements.length, maxDisplayed)
 
     div className: 'page-contents__content profile-achievements text-center',
       div className: 'page-contents__row page-contents__row--top',
         div className: 'profile-badge profile-badge--achievements',
           span className: 'profile-badge__number',
+<<<<<<< HEAD
+            @props.achievementsCounts.current
+
+        div className: 'profile-exp-bar',
+          div
+            className: 'profile-exp-bar--fill'
+            style:
+              width: "#{achievementsProgress}%"
+
+        # dl className: 'profile-stats profile-stats--light',
+        #   dt()
+        #   dd {}, "#{achievementsProgress}%"
+=======
             counts.current
 
         div className: 'profile-exp-bar',
@@ -53,20 +55,25 @@ class ProfilePage.RecentAchievements extends React.Component
             style:
               width: "#{achievementsProgress}%"
 
+>>>>>>> master
         span className: 'profile-achievements__percentage',
           "#{achievementsProgress}%"
 
       div className: 'page-contents__row profile-achievements__list',
+<<<<<<< HEAD
+        @props.allAchievements.slice(0, maxDisplayed).map (userAchievement, i) =>
+=======
         currentUserAchievements[...maxDisplayed].map (a, i) =>
+>>>>>>> master
           el ProfilePage.AchievementBadge,
             key: "profile-achievement-#{i}"
-            achievement: a.achievement
-            userAchievement: a.userAchievement
+            achievement: userAchievement.achievement.data
+            userAchievement: userAchievement
             additionalClasses: 'badge-achievement--recent'
 
-      if currentUserAchievements.length > maxDisplayed
+      if moreCount > 0
         a
           href: '#'
           onClick: @_showAllMedals
           small {},
-            Lang.get('users.show.more_achievements')
+            Lang.get('users.show.more_achievements', count: moreCount)

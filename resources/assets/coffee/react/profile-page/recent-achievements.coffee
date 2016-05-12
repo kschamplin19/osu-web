@@ -34,19 +34,6 @@ class ProfilePage.RecentAchievements extends React.Component
       div className: 'page-contents__row page-contents__row--top',
         div className: 'profile-badge profile-badge--achievements',
           span className: 'profile-badge__number',
-<<<<<<< HEAD
-            @props.achievementsCounts.current
-
-        div className: 'profile-exp-bar',
-          div
-            className: 'profile-exp-bar--fill'
-            style:
-              width: "#{achievementsProgress}%"
-
-        # dl className: 'profile-stats profile-stats--light',
-        #   dt()
-        #   dd {}, "#{achievementsProgress}%"
-=======
             counts.current
 
         div className: 'profile-exp-bar',
@@ -55,16 +42,11 @@ class ProfilePage.RecentAchievements extends React.Component
             style:
               width: "#{achievementsProgress}%"
 
->>>>>>> master
         span className: 'profile-achievements__percentage',
           "#{achievementsProgress}%"
 
       div className: 'page-contents__row profile-achievements__list',
-<<<<<<< HEAD
-        @props.allAchievements.slice(0, maxDisplayed).map (userAchievement, i) =>
-=======
         currentUserAchievements[...maxDisplayed].map (a, i) =>
->>>>>>> master
           el ProfilePage.AchievementBadge,
             key: "profile-achievement-#{i}"
             achievement: userAchievement.achievement.data

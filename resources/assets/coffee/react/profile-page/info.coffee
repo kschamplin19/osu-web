@@ -34,16 +34,9 @@ class ProfilePage.Info extends React.Component
       keys.push 'age'
 
     return keys
-
-<<<<<<< HEAD
   datas = ['twitter', 'skype', 'lastfm', 'playstyles']
 
   render: =>
-=======
-  render: =>
-    elements = ['twitter', 'skype', 'lastfm', 'playstyles']
-
->>>>>>> master
     el 'div', className: 'page-contents__content profile-info',
       el 'div', className: 'profile-info__icons page-contents__row',
         if @props.user.isSupporter
@@ -74,26 +67,7 @@ class ProfilePage.Info extends React.Component
       el 'p',
         className: 'page-contents__row'
         dangerouslySetInnerHTML: { __html: Lang.get 'users.show.lastvisit', date: osu.timeago(@props.user.lastvisit) }
-
-<<<<<<< HEAD
       datas.map (m) =>
-        switch m
-          when 'twitter'
-            return unless @props.user.twitter
-            dt = 'Twitter'
-            dd = el 'a', href: "https://twitter.com/#{@props.user.twitter}", "@#{@props.user.twitter}"
-          when 'skype'
-            return unless @props.user.skype
-            dt = 'Skype'
-            dd = el 'a', href: "skype:#{@props.user.skype}?chat", @props.user.skype
-          when 'lastfm'
-            return unless @props.user.lastfm
-            dt = 'Last.fm'
-            dd = el 'a', href: "https://last.fm/user/#{@props.user.lastfm}", @props.user.lastfm
-          when 'playstyles'
-            return unless @props.user.playstyle.length
-=======
-      elements.map (m) =>
         return if !@props.user[m]
         switch m
           when 'twitter'
@@ -106,7 +80,6 @@ class ProfilePage.Info extends React.Component
             dt = 'Last.fm'
             dd = el 'a', href: "https://last.fm/user/#{@props.user.lastfm}", @props.user.lastfm
           when 'playstyles'
->>>>>>> master
             dt = Lang.get 'users.show.plays_with._'
             dd = @props.user.playstyle.map (s) ->
                   Lang.get "users.show.plays_with.#{s}"

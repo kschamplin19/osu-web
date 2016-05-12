@@ -119,3 +119,4 @@ class TeamPage.Header extends React.Component
 
       if @state.editing
         el TeamPage.CoverSelector, canUpload: true, cover: @props.user.cover
+###

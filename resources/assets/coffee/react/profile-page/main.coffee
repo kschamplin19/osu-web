@@ -18,14 +18,20 @@
 {div} = React.DOM
 el = React.createElement
 
+<<<<<<< HEAD
 class ProfilePage.Main extends SwitchableModePage
   constructor: (props) ->
     super props
+=======
+ProfilePage.Main = React.createClass
+  mixins: [ScrollingPageMixin]
+>>>>>>> master
 
+  getInitialState: ->
     optionsHash = ProfilePageHash.parse location.hash
     @initialPage = optionsHash.page
-    @timeouts = {}
 
+<<<<<<< HEAD
     @state =
       currentMode: optionsHash.mode || props.user.playmode
       user: props.user
@@ -36,50 +42,76 @@ class ProfilePage.Main extends SwitchableModePage
         editing: false
         selection: [0, 0]
       isCoverUpdating: false
+=======
+    currentMode: @validMode(optionsHash.mode ? @props.user.playmode)
+    user: @props.user
+    userPage:
+      html: @props.userPage.html
+      initialRaw: @props.userPage.raw
+      raw: @props.userPage.raw
+      editing: false
+      selection: [0, 0]
+    isCoverUpdating: false
+>>>>>>> master
 
 
-  coverUploadState: (_e, state) =>
+  coverUploadState: (_e, state) ->
     @setState isCoverUpdating: state
 
 
+<<<<<<< HEAD
   setHash: =>
+=======
+  setCurrentMode: (_e, mode) ->
+    return if @state.currentMode == mode
+    @setState currentMode: @validMode(mode), @setHash
+
+
+  setHash: ->
+>>>>>>> master
     osu.setHash ProfilePageHash.generate(page: @state.currentPage, mode: @state.currentMode)
 
 
-  userUpdate: (_e, user) =>
+  userUpdate: (_e, user) ->
     return if !user?
     @setState user: user
 
 
-  userPageUpdate: (_e, newUserPage) =>
+  userPageUpdate: (_e, newUserPage) ->
     currentUserPage = _.cloneDeep @state.userPage
     @setState userPage: _.extend(currentUserPage, newUserPage)
 
 
+<<<<<<< HEAD
   componentDidMount: =>
+=======
+  componentDidMount: ->
+>>>>>>> master
     @removeListeners()
     $.subscribe 'user:update.profilePage', @userUpdate
     $.subscribe 'user:cover:upload:state.profilePage', @coverUploadState
     $.subscribe 'user:page:update.profilePage', @userPageUpdate
     $.subscribe 'profile:mode:set.profilePage', @setCurrentMode
     $.subscribe 'profile:page:jump.profilePage', @pageJump
-    $(window).on 'throttled-scroll.profilePage', @pageScan
 
     @pageJump null, @initialPage
 
 
+<<<<<<< HEAD
   componentWillUnmount: =>
     for own _name, timeout of @timeouts
       clearTimeout timeout
 
+=======
+  componentWillUnmount: ->
+>>>>>>> master
     @removeListeners()
 
 
-  removeListeners: =>
+  removeListeners: ->
     $.unsubscribe '.profilePage'
-    $(window).off '.profilePage'
 
-  render: =>
+  render: ->
     rankHistories = @props.allRankHistories[@state.currentMode]?.data
     stats = @props.allStats[@state.currentMode].data
     scores = @props.allScores[@state.currentMode].data
@@ -99,7 +131,12 @@ class ProfilePage.Main extends SwitchableModePage
         stats: stats
         currentMode: @state.currentMode
         currentPage: @state.currentPage
+<<<<<<< HEAD
         allAchievements: @props.allAchievements
+=======
+        userAchievements: @props.userAchievements
+        achievements: @props.achievements
+>>>>>>> master
 
       el ProfilePage.Extra,
         achievements: @props.achievements
@@ -120,3 +157,15 @@ class ProfilePage.Main extends SwitchableModePage
         userPage: @state.userPage
         currentPage: @state.currentPage
         currentMode: @state.currentMode
+<<<<<<< HEAD
+=======
+
+
+  validMode: (mode) ->
+    modes = BeatmapHelper.modes
+
+    if _.includes(modes, mode)
+      mode
+    else
+      modes[0]
+>>>>>>> master

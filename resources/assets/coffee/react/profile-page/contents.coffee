@@ -34,7 +34,11 @@ class ProfilePage.Contents extends React.Component
       className: 'osu-layout__row osu-layout__row--page-profile js-switchable-mode-page--scrollspy js-switchable-mode-page--page'
       'data-page-id': 'main'
       el 'div', className: 'page-tabs',
+<<<<<<< HEAD
         tabs.map (t) =>
+=======
+        BeatmapHelper.modes.map (t) =>
+>>>>>>> master
           el ProfilePage.ContentsTab,
             key: t
             currentMode: @props.currentMode

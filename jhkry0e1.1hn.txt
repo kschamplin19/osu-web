@@ -1,0 +1,118 @@
+﻿Merge branch 'master' into team-pages
+
+# Conflicts:
+#	gulpfile.js
+#	resources/assets/coffee/react/profile-page/contents.coffee
+#	resources/assets/coffee/react/profile-page/extra.coffee
+#	resources/assets/coffee/react/profile-page/header.coffee
+#	resources/assets/coffee/react/profile-page/info.coffee
+#	resources/assets/coffee/react/profile-page/main.coffee
+#	resources/assets/coffee/react/profile-page/recent-achievements.coffee
+#	resources/assets/coffee/react/profile-page/stats.coffee
+#	resources/assets/coffee/react/profile-page/user-page.coffee
+#	resources/assets/less/bem-index.less
+#	resources/assets/less/bem/page-tabs.less
+#	resources/assets/less/bem/profile-exp-bar.less
+#	resources/assets/less/bem/profile-extra-user-page-editor.less
+#	resources/assets/less/variables.less
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch team-pages
+# Your branch is up-to-date with 'origin/team-pages'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .travis.yml
+#
+# Changes not staged for commit:
+#	modified:   app/Http/Controllers/AccountController.php
+#	modified:   app/Http/Controllers/BeatmapController.php
+#	modified:   app/Http/Controllers/BeatmapsetsController.php
+#	modified:   app/Http/routes.php
+#	modified:   app/Models/Beatmap.php
+#	modified:   app/Models/BeatmapSet.php
+#	modified:   app/Models/Country.php
+#	modified:   app/Models/User.php
+#	deleted:    app/Transformers/BeatmapDifficultyTransformer.php
+#	modified:   app/Transformers/BeatmapSetTransformer.php
+#	modified:   app/Transformers/BeatmapTransformer.php
+#	modified:   app/Transformers/ScoreTransformer.php
+#	modified:   app/Transformers/UserCompactTransformer.php
+#	modified:   app/helpers.php
+#	modified:   config/osu.php
+#	modified:   database/factories/BeatmapSetFactory.php
+#	modified:   database/seeds/ModelSeeders/BeatmapSeeder.php
+#	modified:   database/seeds/ModelSeeders/ForumSeeder.php
+#	modified:   gulpfile.js
+#	modified:   resources/assets/coffee/_classes/line-chart.coffee
+#	modified:   resources/assets/coffee/_classes/url.coffee
+#	modified:   resources/assets/coffee/osu_common.coffee
+#	modified:   resources/assets/coffee/react/_components/beatmap-icon.coffee
+#	modified:   resources/assets/coffee/react/_components/beatmapset-panel.coffee
+#	modified:   resources/assets/coffee/react/beatmaps/main.coffee
+#	modified:   resources/assets/coffee/react/beatmaps/search-panel.coffee
+#	modified:   resources/assets/coffee/react/profile-page/contents.coffee
+#	modified:   resources/assets/coffee/react/profile-page/extra.coffee
+#	modified:   resources/assets/coffee/react/profile-page/header.coffee
+#	modified:   resources/assets/coffee/react/profile-page/historical.coffee
+#	modified:   resources/assets/coffee/react/profile-page/info.coffee
+#	modified:   resources/assets/coffee/react/profile-page/main.coffee
+#	modified:   resources/assets/coffee/react/profile-page/recent-achievements.coffee
+#	modified:   resources/assets/coffee/react/profile-page/stats.coffee
+#	modified:   resources/assets/coffee/react/profile-page/user-page.coffee
+#	modified:   resources/assets/less/beatmaps.less
+#	modified:   resources/assets/less/bem-index.less
+#	modified:   resources/assets/less/bem/avatar.less
+#	modified:   resources/assets/less/bem/beatmap-icon.less
+#	modified:   resources/assets/less/bem/beatmapset-panel.less
+#	modified:   resources/assets/less/bem/flag-country.less
+#	modified:   resources/assets/less/bem/forum-post-actions.less
+#	modified:   resources/assets/less/bem/osu-layout.less
+#	modified:   resources/assets/less/bem/page-tabs.less
+#	modified:   resources/assets/less/bem/profile-exp-bar.less
+#	modified:   resources/assets/less/bem/profile-extra-user-page-editor.less
+#	modified:   resources/assets/less/bem/user-profile-header.less
+#	modified:   resources/assets/less/functions.less
+#	deleted:    resources/assets/less/users.less
+#	modified:   resources/assets/less/variables.less
+#	modified:   resources/lang/en/beatmaps.php
+#	modified:   resources/lang/en/layout.php
+#	modified:   resources/lang/en/users.php
+#	modified:   resources/views/layout/metadata.blade.php
+#
+# Untracked files:
+#	app/Models/BeatmapFailtimes.php
+#	app/Models/UserRelation.php
+#	app/Transformers/BeatmapFailtimesTransformer.php
+#	app/Transformers/CountryTransformer.php
+#	database/factories/BeatmapFailtimesFactory.php
+#	database/migrations/2015_01_01_133338_create_beatmap_failtimes_table.php
+#	database/migrations/2016_04_14_061643_create_user_zebras_table.php
+#	resources/assets/coffee/_classes/bar-chart.coffee
+#	resources/assets/coffee/_classes/beatmap-helper.coffee
+#	resources/assets/coffee/_classes/beatmapset-page-hash.coffee
+#	resources/assets/coffee/_classes/radar-chart.coffee
+#	resources/assets/coffee/react/_mixins/
+#	resources/assets/coffee/react/beatmapset-page.coffee
+#	resources/assets/coffee/react/beatmapset-page/
+#	resources/assets/less/bem/beatmapset-description.less
+#	resources/assets/less/bem/beatmapset-details.less
+#	resources/assets/less/bem/beatmapset-diffchart.less
+#	resources/assets/less/bem/beatmapset-difficulties.less
+#	resources/assets/less/bem/beatmapset-header.less
+#	resources/assets/less/bem/beatmapset-scoreboard-first.less
+#	resources/assets/less/bem/beatmapset-scoreboard.less
+#	resources/assets/less/bem/beatmapset-stats.less
+#	resources/assets/less/bem/beatmapset-success-rate.less
+#	resources/views/beatmapsets/show.blade.php
+#	tests/Controllers/BeatmapControllerTest.php
+#
+

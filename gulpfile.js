@@ -52,6 +52,7 @@ elixir(function (mix) {
   mix.coffee([
     '_classes/*.coffee',
     'react/_components/*.coffee',
+    'react/_mixins/*.coffee',
 
     'jquery-pubsub.coffee',
     'osu!live.coffee',
@@ -99,11 +100,19 @@ elixir(function (mix) {
     'react/beatmap-discussions/*.coffee',
     'react/beatmap-discussions.coffee'
   ], 'public/js/react/beatmap-discussions.js')
+<<<<<<< HEAD
   mix.coffee([
     'react/team-page/*.coffee',
     'react/team-page.coffee'
   ], 'public/js/react/team-page.js')
   mix.version([
+=======
+  .coffee([
+    'react/beatmapset-page/*.coffee',
+    'react/beatmapset-page.coffee'
+  ], 'public/js/react/beatmapset-page.js')
+  .version([
+>>>>>>> master
     'css/app.css',
     'js/app.js',
     'js/react/profile-page.js',
@@ -111,6 +120,10 @@ elixir(function (mix) {
     'js/react/slack-page.js',
     'js/react/status-page.js',
     'js/react/beatmap-discussions.js',
+<<<<<<< HEAD
     'js/react/team-page.js'
+=======
+    'js/react/beatmapset-page.js',
+>>>>>>> master
   ]);
 });

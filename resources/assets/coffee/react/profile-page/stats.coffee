@@ -21,6 +21,11 @@ class ProfilePage.Stats extends React.Component
   datas = ['ranked-score', 'accuracy', 'playcount', 'total-score', 'hits', 'maxcombo', 'replays-watched']
 
   render: =>
+<<<<<<< HEAD
+=======
+    elements = ['ranked-score', 'accuracy', 'playcount', 'total-score', 'hits', 'maxcombo', 'replays-watched']
+
+>>>>>>> master
     el 'div', className: 'page-contents__content profile-stats',
       el 'div', className: 'page-contents__row page-contents__row--top',
         el 'div', className: 'profile-badge profile-badge--level',
@@ -37,6 +42,7 @@ class ProfilePage.Stats extends React.Component
             Lang.get 'users.show.stats.level', level: @props.stats.level.current
           el 'dd', className: 'profile-stats__stat-value, profile-stats__stat-value--light',
             "#{@props.stats.level.progress.toFixed()}"
+<<<<<<< HEAD
         # el 'span', className: 'profile-stats__level',
         #   Lang.get 'users.show.stats.level', level: @props.stats.level.current
         # el 'span', className: 'profile-stats__percentage',
@@ -44,6 +50,11 @@ class ProfilePage.Stats extends React.Component
 
       el 'div', className: 'page-contents__row',
         datas.map (m) =>
+=======
+
+      el 'div', className: 'page-contents__row',
+        elements.map (m) =>
+>>>>>>> master
           switch m
             when 'ranked-score'
               dt = Lang.get 'users.show.stats.ranked_score'

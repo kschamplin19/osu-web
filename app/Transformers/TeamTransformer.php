@@ -18,17 +18,19 @@
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace App\Transformers;
+
 use App\Models\Team;
 use League\Fractal;
 
 class TeamTransformer extends Fractal\TransformerAbstract
 {
-  protected $availableIncludes = [
+    protected $availableIncludes = [
   ];
-  public function transform(Team $team)
-  {
-    return [
-      'id'  => $team->id,
+
+    public function transform(Team $team)
+    {
+        return [
+      'id' => $team->id,
       'name' => $team->name,
       'created' => display_regdate($team),
       'members' => [
@@ -36,5 +38,5 @@ class TeamTransformer extends Fractal\TransformerAbstract
         'members' => $team->getMembers(),
       ],
     ];
-  }
+    }
 }

@@ -16,29 +16,33 @@
  *    You should have received a copy of the GNU Affero General Public License
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
- namespace App\Http\Controllers;
+namespace App\Http\Controllers;
 
 use App\Models\Team;
 use Auth;
+
 class TeamsController extends Controller
- {
-   protected $section = 'community';
-   function __construct()
-   {
-     $this->middleware('auth');
-     parent::__construct();
-   }
-   public function index()
-   {
-     return view('teams.index');
-   }
-   public function show($id)
-   {
-     $team = Team::lookup($id);
-     if ($team === null) {
-       abort(404);
-     }
-     
-     return view('teams.show')->with('team', Team::findOrFail($id));
-   }
- }
+{
+    protected $section = 'community';
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        parent::__construct();
+    }
+
+    public function index()
+    {
+        return view('teams.index');
+    }
+
+    public function show($id)
+    {
+        $team = Team::lookup($id);
+        if ($team === null) {
+            abort(404);
+        }
+
+        return view('teams.show')->with('team', Team::findOrFail($id));
+    }
+}

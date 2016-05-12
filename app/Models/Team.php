@@ -73,4 +73,3 @@ use Illuminate\Database\Eloquent\Model;
          return $team->first();
      }
  }
->>>>>>> Applied fixes from StyleCI

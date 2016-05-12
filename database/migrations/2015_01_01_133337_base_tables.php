@@ -1220,6 +1220,7 @@ class BaseTables extends Migration
             $table->string('remember_token', 100)->nullable();
             $table->unique('username_clean', 'username_clean');
             $table->unique(['username', 'user_id'], 'username_id');
+            $table->mediumInteger('team_id')->default(0);
         });
         $this->setRowFormat('phpbb_users', 'DYNAMIC');
 

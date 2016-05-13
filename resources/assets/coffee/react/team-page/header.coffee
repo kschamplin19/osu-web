@@ -104,10 +104,10 @@ class TeamPage.Header extends React.Component
           el 'div', className: 'spinner__cube spinner__cube--2'
 
       el 'div', className: 'profile-header__userbar-container',
-        el 'div', className: 'user-profile-header__bar user-profile-header__bar--left', 
+        el 'div', className: 'user-profile-header user-profile-header--left', 
           el TeamPage.HeaderFlags, team: @props.team
           el TeamPage.HeaderInfo, team: @props.team
-        el 'div', className: 'user-profile-header__bar user-profile-header__bar--right',
+        el 'div', className: 'user-profile-header user-profile-header--right',
           el TeamPage.Rank, 
             rank: 1
 ###

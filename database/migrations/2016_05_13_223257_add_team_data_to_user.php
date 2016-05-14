@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTeamsTable extends Migration
+class AddTeamDataToUser extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
-            $table->string('avatarUrl');
+        Schema::table('phpbb_users', function (Blueprint $table)
+        {
+            $table->mediumInteger('team_id')->default(0);
+            $table->integer('team_is_admin')->default(0);
         });
     }
 
@@ -28,6 +27,5 @@ class CreateTeamsTable extends Migration
     public function down()
     {
         //
-        Schema::drop('teams');
     }
 }

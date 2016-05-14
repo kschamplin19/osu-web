@@ -32,16 +32,6 @@ class Team extends Model
       'name' => 'string',
     ];
 
-    public static function getAdmins()
-    {
-        return [1]; //temporary user 1
-    }
-
-    public static function getMembers()
-    {
-        return [2]; //temporary user 2
-    }
-
     public static function lookup($teamname_or_id, $lookup_type = null, $find_all = false)
     {
         if (!present($teamname_or_id)) {

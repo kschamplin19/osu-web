@@ -47,7 +47,6 @@ class TeamsController extends Controller
             $team,
             new TeamTransformer($team)
         );
-
-        return view('teams.show', compact('team', 'teamArray', 'teamAchievements'));
+        return view('teams.show', compact('team', 'teamArray'));
     }
 }

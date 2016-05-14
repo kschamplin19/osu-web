@@ -35,7 +35,7 @@ class TeamPage.Header extends React.Component
 
 
   componentWillReceiveProps: (newProps) =>
-    @coverSet null, newProps.user.cover.url
+    @coverSet null, newProps.team.coverUrl
 
 
   componentWillUnmount: =>

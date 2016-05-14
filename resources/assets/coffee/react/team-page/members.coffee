@@ -17,17 +17,16 @@
 ###
 el = React.createElement
 
-class TeamPage.ContentsTab extends React.Component
-  onClick: (e) =>
-    e.preventDefault()
-    $.publish 'team:mode:set', @props.mode
-
+class TeamPage.Members extends React.Component
   render: =>
-    className = 'page-tabs__tab'
-    className += ' page-tabs__tab--active' if @props.mode == @props.currentMode
+    elements = ['admins', 'members']
 
-    el 'a',
-      href:  '#' + @props.mode
-      onClick: @onClick
-      className: className
-      Lang.get "teams.mode.#{@props.mode}"
+    el 'div', className: 'page-contents__content profile-stats',
+      el 'p', 'Members'
+      el 'div', className: 'page-contents__row',
+        @props.team.members.data.map (m) ->
+          el UserAvatar, user: m, key: m.id, modifiers: ['profile']
+      el 'p', 'Members'
+      el 'div', className: 'page-contents__row',
+        @props.team.admins.data.map (m) ->
+          el UserAvatar, user: m, key: m.id, modifiers: ['profile']

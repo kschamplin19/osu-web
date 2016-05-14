@@ -22,19 +22,25 @@ class TeamPage.Main extends React.Component
   constructor: (props) ->
     super props
     @timeouts = {}
-
+    
     @state =
       team: props.team
       isCoverUpdating: false
+      currentMode: 'info'
+  componentDidMount: =>
+    $.unsubscribe '.teamPage'
+    $.subscribe 'team:mode:set.teamPage', @setCurrentMode
+
+  setCurrentMode: (_e, mode) =>
+    return if @state.currentMode == mode
+    @setState currentMode: mode
   render: ->
     div className: 'osu-layout__section',
       el TeamPage.Header,
         team: @state.team
         currentMode: @state.currentMode
-        withEdit: @props.withEdit
         isCoverUpdating: @state.isCoverUpdating
       el TeamPage.Contents,
         team: @state.team
         currentMode: @state.currentMode
-        currentPage: @state.currentPage
         allAchievements: @props.allAchievements

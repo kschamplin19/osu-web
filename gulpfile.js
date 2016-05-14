@@ -43,7 +43,6 @@ elixir.config.css.cssnano.pluginOptions = {
  | file for our application, as well as publishing vendor resources.
  |
  */
-
 elixir(function(mix) {
   mix
   .copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')

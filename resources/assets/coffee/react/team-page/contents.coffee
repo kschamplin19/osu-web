@@ -26,7 +26,6 @@ class TeamPage.Contents extends React.Component
   componentWillReceiveProps: ->
     osu.pageChange()
 
-
   render: =>
     tabs = ['info', 'team_members', 'administration']
 
@@ -38,12 +37,20 @@ class TeamPage.Contents extends React.Component
           el TeamPage.ContentsTab,
             key: t
             currentMode: @props.currentMode
-            currentPage: @props.currentPage
             mode: t
-###      el 'div', className: 'page-contents',
-        el TeamPage.Info, user: @props.user
-        el TeamPage.Stats, stats: @props.stats
-        el TeamPage.RecentAchievements,
+      el 'div', className: 'page-contents',
+        #if @props.currentMode == 'info'
+        if @props.currentMode == 'team_members'
+          el TeamPage.Members,
+            team: @props.team
+            withEdit: @props.team.admins.data.some((e) -> e.user_id == window.currentUser.id)
+        if @props.currentMode == 'administration'
+          el 'div', className: 'page-contents-different',
+
+###
+          el TeamPage.Info, team: @props.team
+          el TeamPage.Stats, stats: @props.stats
+          el TeamPage.RecentAchievements,
           achievementsCounts: @props.user.achievements
           allAchievements: @props.allAchievements
 ###

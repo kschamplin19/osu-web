@@ -26,5 +26,7 @@ return [
     ],
     'show' => [
         'joined_at' => 'established since :date',
+        'members' => 'members',
+        'admins' => 'admins', 
     ],
 ];

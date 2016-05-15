@@ -15,18 +15,27 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 ###
-el = React.createElement
+{div} = React.DOM
 
-class TeamPage.Members extends React.Component
-  render: =>
-    elements = ['admins', 'members']
+bn = 'avatar'
 
-    el 'div', className: 'page-contents__content profile-stats',
-      el 'p', 'Members'
-      el 'div', className: 'page-contents__row',
-        @props.team.members.data.map (m) ->
-          el UserAvatar, user: m, key: m.id, modifiers: ['profile']
-      el 'p', 'Members'
-      el 'div', className: 'page-contents__row',
-        @props.team.admins.data.map (m) ->
-          el UserAvatar, user: m, key: m.id, modifiers: ['profile']
+@TeamMemberAvatar = React.createClass
+  mixins: [React.addons.PureRenderMixin]
+
+
+  render: ->
+    modifiers = @props
+      .modifiers
+      .map (m) => "#{bn}--#{m}"
+      .join ' '
+
+    className = "#{bn} #{modifiers}"
+    if @props.locked
+      className += ' ui-state-disabled'
+    if @props.user.id?
+      div
+        className: className
+        style:
+          backgroundImage: "url('#{@props.user.avatarUrl}')"
+    else
+      div className: "#{className} #{bn}--guest"

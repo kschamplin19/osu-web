@@ -26,7 +26,7 @@ class TeamPage.Main extends React.Component
     @state =
       team: props.team
       isCoverUpdating: false
-      currentMode: 'info'
+      currentMode: 'team_members'
   componentDidMount: =>
     $.unsubscribe '.teamPage'
     $.subscribe 'team:mode:set.teamPage', @setCurrentMode

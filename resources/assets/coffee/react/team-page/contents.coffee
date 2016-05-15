@@ -41,9 +41,9 @@ class TeamPage.Contents extends React.Component
       el 'div', className: 'page-contents',
         #if @props.currentMode == 'info'
         if @props.currentMode == 'team_members'
-          el TeamPage.Members,
+          el TeamPage.TeamMembers,
             team: @props.team
-            withEdit: @props.team.admins.data.some((e) -> e.user_id == window.currentUser.id)
+            withEdit: @props.team.admins.data.some((e) -> e.id == window.currentUser.id)
         if @props.currentMode == 'administration'
           el 'div', className: 'page-contents-different',
 

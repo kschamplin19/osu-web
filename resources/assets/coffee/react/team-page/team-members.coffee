@@ -20,14 +20,22 @@ el = React.createElement
 class TeamPage.TeamMembers extends React.Component
   componentDidMount: ->
     if @props.withEdit
-      $('#admins, #members').sortable(connectWith: '.team-members-list', cancel: ".ui-state-disabled").disableSelection()
+      $('#admins, #members').sortable(
+        connectWith: '.team-members__list', 
+        cancel: ".ui-state-disabled"
+        items: "*:not(:last-child)"
+        ).disableSelection()
   render: =>
     el 'div', className: 'team-members',
       el 'p', className: 'team-members__title', Lang.get("teams.show.admins")
       el 'div', className: 'team-members__list', id: 'admins',
         @props.team.admins.data.map (m) ->
           el TeamMemberAvatar, user: m, key: m.id, modifiers: ['members'], locked: m.id == window.currentUser.id
+        if @props.withEdit
+          el TeamPage.AddUserButton, team: @props.team, array: @props.team.admins.data
       el 'p', className: 'team-members__title', Lang.get("teams.show.members")
       el 'div', className: 'team-members__list', id: 'members',
         @props.team.members.data.map (m) ->
           el TeamMemberAvatar, user: m, key: m.id, modifiers: ['members']
+        if @props.withEdit
+          el TeamPage.AddUserButton, team: @props.team, array: @props.team.members.data

@@ -12,8 +12,7 @@ class AddTeamDataToUser extends Migration
      */
     public function up()
     {
-        Schema::table('phpbb_users', function (Blueprint $table)
-        {
+        Schema::table('phpbb_users', function (Blueprint $table) {
             $table->mediumInteger('team_id')->default(0);
             $table->integer('team_is_admin')->default(0);
         });

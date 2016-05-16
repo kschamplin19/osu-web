@@ -18,7 +18,7 @@
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace App\Transformers;
-  
+
 use App\Models\Team;
 use League\Fractal;
 use App\Models\User;
@@ -38,13 +38,14 @@ class TeamTransformer extends Fractal\TransformerAbstract
       'created' => display_regdate($team),
     ];
     }
+
     public function includeMembers(Team $team)
     {
-      return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 0)->get(), new UserTransformer());
-    }
-    public function includeAdmins(Team $team)
-    {
-      return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 1)->get(), new UserTransformer());
+        return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 0)->get(), new UserTransformer());
     }
 
+    public function includeAdmins(Team $team)
+    {
+        return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 1)->get(), new UserTransformer());
+    }
 }

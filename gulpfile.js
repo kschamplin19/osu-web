@@ -107,8 +107,8 @@ elixir(function(mix) {
   .coffee([
     'react/team-page/*.coffee',
     'react/team-page.coffee'
-  ], 'public/js/react/team-page.js')
-  .version([
+  ], 'public/js/react/team-page.js');
+  mix.version([
     'css/app.css',
     'js/app.js',
     'js/react/profile-page.js',

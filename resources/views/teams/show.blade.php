@@ -28,6 +28,7 @@
     @parent
     <script data-turbolinks-eval="always">
         var team = {!! json_encode($teamArray['data']) !!};
+        {{-- var teamMembers = {!! json_encode($teamMembersArray['data']) !!}; --}}
         console.log(team);
     </script>
 

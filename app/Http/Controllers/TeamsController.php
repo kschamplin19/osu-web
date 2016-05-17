@@ -49,4 +49,8 @@ class TeamsController extends Controller
         );
         return view('teams.show', compact('team', 'teamArray'));
     }
+    public function updateMembers($value='')
+    {
+        # code...
+    }
 }

@@ -22,6 +22,7 @@ namespace App\Transformers;
 use App\Models\Team;
 use League\Fractal;
 use App\Models\User;
+use App\Models\TeamMembers;
 
 class TeamTransformer extends Fractal\TransformerAbstract
 {
@@ -40,11 +41,16 @@ class TeamTransformer extends Fractal\TransformerAbstract
     }
     public function includeMembers(Team $team)
     {
-      return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 0)->get(), new UserTransformer());
+      $membersid = TeamMembers::where('team_id', $team->id)->where('is_admin', 0)->get();
+      $members = User::whereIn('user_id', $membersid->pluck('user_id'))->get();
+      return $this->collection($members, new UserTransformer());
     }
     public function includeAdmins(Team $team)
     {
-      return $this->collection(User::where('team_id', $team->id)->where('team_is_admin', 1)->get(), new UserTransformer());
+      $adminsList = TeamMembers::where('team_id', $team->id)->where('is_admin', 0)->get();
+      $adminUsers = User::whereIn('user_id', $adminsList->pluck('user_id'))->get();
+      return $this->collection($adminUsers, new UserTransformer());
+      // return [0];// $this->collection(User::where('team_id', $team->id)->where('is_admin', 1)->get(), new UserTransformer());
     }
 
 }

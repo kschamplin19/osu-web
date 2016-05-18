@@ -42,10 +42,10 @@ class TeamTransformer extends Fractal\TransformerAbstract
 
     public function includeMembers(Team $team)
     {
-      $membersid = TeamMembers::where('team_id', $team->id)->where('is_admin', 0)->get();
-      $members = User::whereIn('user_id', $membersid->pluck('user_id'))->get();
-      return $this->collection($members, new UserTransformer());
+        $membersid = TeamMembers::where('team_id', $team->id)->where('is_admin', 0)->get();
+        $members = User::whereIn('user_id', $membersid->pluck('user_id'))->get();
 
+        return $this->collection($members, new UserTransformer());
     }
 
     public function includeAdmins(Team $team)

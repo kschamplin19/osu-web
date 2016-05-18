@@ -19,5 +19,5 @@ el = React.createElement
 
 class TeamPage.AddUserButton extends React.Component
   render: ->
-    el 'div', className: 'team-members__add ui-state-disabled', #onClick: 
+    el 'div', className: 'team-members__add', #onClick: 
       el 'i', className: 'fa fa-plus team-members__icon'

@@ -23,7 +23,10 @@ class TeamPage.TeamMembers extends React.Component
       $('#admins, #members').sortable(
         connectWith: '.team-members__list', 
         cancel: ".ui-state-disabled"
-        items: "*:not(:last-child)"
+        items: "div:not(.team-members__add)"
+        update: (event, ui) ->
+          console.log event
+          console.log ui
         ).disableSelection()
   render: =>
     el 'div', className: 'team-members',

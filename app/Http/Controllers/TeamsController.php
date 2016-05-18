@@ -20,6 +20,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Transformers\TeamTransformer;
+use App\Models\TeamMembers;
 use Auth;
 
 class TeamsController extends Controller
@@ -51,8 +52,13 @@ class TeamsController extends Controller
         return view('teams.show', compact('team', 'teamArray'));
     }
 
-    public function updateMembers($value = '')
+    public function updateMembers($id)
     {
-        // code...
+        // {admins: [1,2,3,52153], members: [46,45,6465,546234]}
+        $team = Team::lookup($id);
+        if ($team === null) {
+            abort(404);
+        }
+        
     }
 }

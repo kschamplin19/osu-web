@@ -24,6 +24,7 @@ class TeamPage.TeamMembers extends React.Component
         connectWith: '.team-members__list', 
         cancel: ".ui-state-disabled"
         items: "div:not(.team-members__add)"
+        tolerance: 'pointer' # make it easier to drop
         update: (event, ui) ->
           console.log event
           console.log ui

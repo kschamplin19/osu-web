@@ -20,7 +20,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Transformers\TeamTransformer;
-use App\Models\TeamMembers;
 use Auth;
 
 class TeamsController extends Controller
@@ -59,6 +58,5 @@ class TeamsController extends Controller
         if ($team === null) {
             abort(404);
         }
-        
     }
 }

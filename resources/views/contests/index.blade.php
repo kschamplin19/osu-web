@@ -36,7 +36,7 @@
             <div class="contest-list">
                 <div class="contest-list-legend">
                     @foreach (['entry', 'voting', 'results'] as $state)
-                        <div class="contest-list-legend__item contest-list-legend__item--{{$state}}">{{trans("contest.states.$state")}}</div>
+                        <div class="contest-list-legend__item contest-list-legend__item--{{$state}}"></div>
                     @endforeach
                 </div>
                 @foreach ($contests as $contest)

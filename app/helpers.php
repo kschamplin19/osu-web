@@ -326,6 +326,7 @@ function nav_links()
         'contests' => route('community.contests.index'),
         'tournaments' => route('tournaments.index'),
         'getLive' => route('livestreams.index'),
+        'teams' => route('teams'),
         'dev' => osu_url('dev'),
     ];
     $links['store'] = [
@@ -401,19 +402,20 @@ function base62_encode($input)
     return $output;
 }
 
-function display_regdate($user)
+function display_regdate($user_or_team)
 {
-    if ($user->user_regdate === null) {
-        return;
+    if ($user_or_team->user_regdate !== null) {
+        if ($user_or_team->user_regdate < Carbon\Carbon::createFromDate(2008, 1, 1)) {
+            return trans('users.show.first_members');
+        }
+        
+        return trans('users.show.joined_at', [
+            'date' => '<strong>' . $user_or_team->user_regdate->formatLocalized('%B %Y') . '</strong>',
+        ]);
+    } elseif ($user_or_team->created_at !== null) {
+        
+        return trans('teams.show.joined_at', ['date' => $user_or_team->created_at->formatLocalized('%B %Y')]);
     }
-
-    if ($user->user_regdate < Carbon\Carbon::createFromDate(2008, 1, 1)) {
-        return trans('users.show.first_members');
-    }
-
-    return trans('users.show.joined_at', [
-        'date' => '<strong>'.$user->user_regdate->formatLocalized('%B %Y').'</strong>',
-    ]);
 }
 
 function i18n_date($datetime, $format = IntlDateFormatter::LONG)

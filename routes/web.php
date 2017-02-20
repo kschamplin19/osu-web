@@ -119,6 +119,18 @@ Route::post('users/login', ['as' => 'users.login', 'uses' => 'UsersController@lo
 Route::delete('users/logout', ['as' => 'users.logout', 'uses' => 'UsersController@logout']);
 Route::get('users/disabled', ['as' => 'users.disabled', 'uses' => 'UsersController@disabled']);
 
+Route::get('/t/{id}', ['as' => 'teams.show', 'uses' => 'TeamsController@show']);
+Route::get('/community/teams', ['as' => 'teams', 'uses' => 'TeamsController@index']);
+Route::post('/t/{id}/member', ['as' => 'team.addMember', 'uses' => 'TeamsController@addMember']);
+Route::delete('/t/{id}/member/{user_id}', ['as' => 'team.removeMember', 'uses' => 'TeamsController@removeMember']);
+Route::post('/t/{id}/updateprofile', ['as' => 'team.updateProfile', 'uses' => 'TeamsController@updateProfile']);
+Route::post('/t/{id}/message', ['as' => 'team.addMessage', 'uses' => 'TeamsController@addMessage']);
+Route::delete('/t/{id}/message/{post_id}', ['as' => 'team.deleteMessage', 'uses' => 'TeamsController@addMessage']);
+Route::get('/a/team/{id}', ['as' => 'team.get', 'uses' => 'TeamsController@get']); // stub for api
+
+// TEMP, I DONT KNOW WHAT TO CALL IT OR WHERE TO PUT IT.
+Route::get('/search', ['as' => 'users.search', 'uses' => 'UsersController@search']);
+
 // Authentication section (Temporarily set up as replacement/improvement of config("osu.urls.*"))
 Route::get('users/forgot-password', ['as' => 'users.forgot-password', function () {
     return Redirect::to('https://osu.ppy.sh/p/forgot');

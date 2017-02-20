@@ -32,7 +32,7 @@ var node_root = '../../../node_modules/';
  */
 elixir.config.css.cssnano.pluginOptions = {
   mergeRules: false,
-}
+};
 
 var min = '';
 if (util.env.production) {
@@ -49,7 +49,6 @@ if (util.env.production) {
  | file for our application, as well as publishing vendor resources.
  |
  */
-
 elixir(function(mix) {
   mix
   .copy('node_modules/font-awesome/fonts', 'public/vendor/fonts/font-awesome')
@@ -104,7 +103,7 @@ elixir(function(mix) {
     path.join(node_root, 'moment/moment.js'),
     path.join(node_root, 'slick-carousel/slick/slick.js'),
     path.join(node_root, 'js-cookie/src/js.cookie.js'),
-
+      path.join(node_root, 'react-bootstrap/dist/react-bootstrap.js'),
     path.join(node_root, 'react-height/build/react-height' + min + '.js'),
     path.join(node_root, 'react-motion/build/react-motion.js'),
     path.join(node_root, 'react-collapse/build/react-collapse' + min + '.js'),
@@ -151,6 +150,10 @@ elixir(function(mix) {
     'react/contest/entry/*.coffee',
     'react/contest-entry.coffee',
   ], 'public/js/react/contest-entry.js')
+      .coffee([
+          'react/team-page/*.coffee',
+          'react/team-page.coffee'
+      ], 'public/js/react/team-page.js')
   .version([
     'css/app.css',
     'js/app.js',
@@ -164,5 +167,6 @@ elixir(function(mix) {
     'js/react/artist-page.js',
     'js/react/contest-voting.js',
     'js/react/contest-entry.js',
+      'js/react/team-page.js',
   ]);
 });

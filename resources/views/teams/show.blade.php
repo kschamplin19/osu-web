@@ -16,8 +16,11 @@
     along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 --}}
 @extends("master", [
-'current_section' => 'community',
-'current_action' => 'team',
+    'current_section' => 'community',
+    'current_action' => 'team',
+    'title' => trans('users.show.title', ['username' => $team->name]),
+    'pageDescription' => trans('users.show.page_description', ['username' => $team->name])
+
 ])
 
 @section("content")
@@ -26,8 +29,8 @@
 
 @section("script")
     @parent
-    <script data-turbolinks-eval="always">
-        var team = {!! json_encode($teamArray) !!};
+    <script id="json-team" type="application/json">
+        {!! json_encode($teamArray) !!};
     </script>
 
     <script src="{{ elixir("js/react/team-page.js") }}" data-turbolinks-track></script>

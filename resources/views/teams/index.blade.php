@@ -39,11 +39,13 @@
                         <div class="teams-index-legend__item teams-index-legend__item--{{$state}}">{{trans("teams.index.canJoin.$state")}}</div>
                     @endforeach
                 </div>
-                @foreach ($teams as $team)
-                    <div class="teams-index__item">
-                        @include('teams._team', compact('team'))
-                    </div>
-                @endforeach
+                <div class="teams-index__items">
+                    @foreach ($teams as $team)
+                        <div class="teams-index__item">
+                            @include('teams._team', compact('team'))
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

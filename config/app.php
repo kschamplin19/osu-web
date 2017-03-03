@@ -206,6 +206,8 @@ return [
 
         /* Datadog Metrics */
         ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider::class,
+        
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
     ],
 
     /*
